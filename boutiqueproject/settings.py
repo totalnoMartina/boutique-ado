@@ -44,10 +44,13 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     #      'allauth.socialaccount.providers.google',
+    #  My apps
     'home',
     'products',
     'bag',
     'checkout',
+    #  Rendering forms with bootstrap help
+    'crispy_forms',
     
 ]
 
@@ -77,6 +80,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'boutiqueproject.urls'
 
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -88,16 +94,19 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',  #  allauth requirement
+                'django.template.context_processors.request', # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
-
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
-
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 AUTHENTICATION_BACKENDS = [
