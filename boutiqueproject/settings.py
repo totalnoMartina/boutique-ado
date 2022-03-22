@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
+    'profiles',
     #  Rendering forms with bootstrap help
     'crispy_forms',
     
