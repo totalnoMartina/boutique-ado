@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'profiles',
     #  Rendering forms with bootstrap help
     'crispy_forms',
-    'django-storages',
+    'storages',
 ]
 
 #  Provider specific settings
