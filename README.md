@@ -106,3 +106,8 @@ Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` f
 ---
 
 Happy coding!
+
+
+-- Martina - Update:
+
+Project is completed, two things failed: testing webhooks on stripesince they updated their website and the way they do that, and secondly - superuser doesn't work on heroku, still looking for a solution there and around for this 
