@@ -2,21 +2,22 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from products.models import Product
+from profiles.models import UserProfile
+
+import json
+import stripe
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 
-from products.models import Product
-from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
-
-import stripe
-import json
 
 
 @require_POST
 def cache_checkout_data(request):
+    """ A function to remember data if connection gets lost while sh """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -33,6 +34,7 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """ A function to handle stripe checkout products """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 

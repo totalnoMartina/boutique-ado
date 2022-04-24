@@ -61,9 +61,9 @@ INSTALLED_APPS = [
 #  Provider specific settings
 #  SOCIALACCOUNT_PROVIDERS = {
 #     'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
+# For each OAuth based provider, either add a ``SocialApp``
+# (``socialaccount`` app) containing the required client
+# credentials, or list them here:
 #         'APP': {
 #             'client_id': '123',
 #             'secret': '456',
@@ -98,7 +98,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # required by allauth
+                'django.template.context_processors.request',  # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',

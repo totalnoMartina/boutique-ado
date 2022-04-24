@@ -6,9 +6,9 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 
-from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
+from .models import Order, OrderLineItem
 
 
 class StripeWH_Handler:
@@ -27,7 +27,7 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+
         send_mail(
             subject,
             body,
@@ -104,7 +104,7 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
-            # by this time order has definitely been completed. webhook will send 
+            # by this time order has definitely been completed. webhook sends
             # email confirmation to the user
             self._send_confirmation_email(order)
             # if order exists returns 200 response
